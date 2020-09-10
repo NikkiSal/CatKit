@@ -10,37 +10,33 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let pets = ["Catie", "Laurie", "Ray", "Jessy", "Antonio"]
     var body: some View {
-        //        List {
-        //            ForEach(pets, id: \.self) {
-        //                Text($0)
-        //            }
-        ScrollView {
-            HStack {
-                ForEach(pets, id: \.self) { pet in
-                    Image(pet)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                }
-                
-            }
-        }
+        Text("This is how you write a few lines of code altogether")
+            .foregroundColor(.primary) // this is an extension to text, and it should be good with light and dark mode,but mine doesn't work  with the buttons on the bottom
+            .font(.custom("Menlo Regular", size: 16)) //make sure to import your font and set it's target as your app,
+            .truncationMode(.middle) // extends the view
+            .multilineTextAlignment(.center) // extends the view
+            
+            .padding() //the placment of this is important.
+            
+            .background(Color.gray)
+            .border(Color.black, width: 3)
         
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group { // this allows you to have more than one ContentView
+            ContentView()
+                .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
+                ContentView()
+                .environment(\.colorScheme, .dark)
+        }
+        
     }
 }
 
-// The String we'll be using in this lecture
-/*
- "Welcome to the Ray Wenderlich course on SwiftUI. In this course we are going to have an EPIC time working with all that SwiftUI has to offer. Remember, the answers are in the documentation :]"
- */
-
 extension Color {
-  static let rayWenderlichGreen = Color(red: 21/255, green: 132/255, blue: 67/255)
+  static let beautifulColor = Color(red: 200/255, green: 100/255, blue: 72/255)
 }
